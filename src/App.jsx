@@ -250,7 +250,7 @@ const ChocolatePage = () => {
             <h2 className="text-4xl font-serif text-white mb-4 italic">Success! ❤️</h2>
             <div className="p-8 bg-white/5 rounded-[2.5rem] border border-white/10 backdrop-blur-xl space-y-4">
               <p className="text-soft font-serif italic text-2xl leading-relaxed">
-                "Yayyyy, You caught them all. Chocolate tway treat chin pay mae lay. Here's some virtual chocolate for Thazin"
+                "Yayyyy, You caught them all. Chocolate asitt tway treat chin pay mae lal. Here's some virtual chocolate for Thazin"
               </p>
               <div className="h-px w-20 bg-primary/30 mx-auto"></div>
               <p className="text-white/60 text-sm italic">You're my favorite! 🥰</p>

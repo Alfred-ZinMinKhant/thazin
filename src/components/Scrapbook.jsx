@@ -1,44 +1,66 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import favoriteImg from '../assets/Favorite.jpg';
+import firstPicImg from '../assets/First_pic.jpeg';
+import secondFavoriteImg from '../assets/Second_favorite.jpeg';
 
 const Scrapbook = () => {
   const images = [
-    { url: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=400', caption: 'The start of us... ❤️' },
-    { url: 'https://images.unsplash.com/photo-1522673607200-1648832cee98?q=80&w=400', caption: 'Every moment is precious ✨' },
-    { url: 'https://images.unsplash.com/photo-1516589174184-c68526614488?q=80&w=400', caption: 'I love our adventures 🏔️' },
-    { url: 'https://images.unsplash.com/photo-1511270339343-9dd7adfcc287?q=80&w=400', caption: 'Together forever 👩‍❤️‍👨' },
+    { url: firstPicImg, caption: 'First pic' },
+    { url: favoriteImg, caption: 'Favorite' },
+    { url: secondFavoriteImg, caption: 'Second favorite' },
   ];
 
   return (
-    <div className="flex flex-col gap-6 overflow-y-auto max-h-[70vh] px-2 pb-8 scrollbar-hide">
+    <div className="flex flex-col gap-8 overflow-y-auto max-h-[75vh] px-4 pb-12 scrollbar-hide">
+      <div className="text-center py-4">
+        <p className="text-white/40 text-[10px] uppercase tracking-[0.5em] font-black">Our Journey</p>
+      </div>
+
       {images.map((img, i) => (
         <motion.div
           key={i}
-          initial={{ opacity: 0, scale: 0.9, rotate: i % 2 === 0 ? -2 : 2 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: i * 0.2 }}
-          whileHover={{ rotate: 0, scale: 1.02 }}
-          className="bg-white p-3 rounded-sm shadow-2xl relative"
+          initial={{ opacity: 0, y: 20, rotate: i % 2 === 0 ? -3 : 3 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.1 }}
+          whileHover={{ rotate: 0, scale: 1.05, zIndex: 50 }}
+          className="bg-white p-4 pb-12 rounded-sm shadow-2xl relative group cursor-pointer"
         >
-          <div className="overflow-hidden mb-3">
+          <div className="overflow-hidden bg-gray-100 aspect-[4/5] relative">
             <img 
               src={img.url} 
-              alt="Memory" 
-              className="w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              alt={img.caption} 
+              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
             />
+            <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
           </div>
-          <p className="font-serif text-gray-800 text-sm italic">{img.caption}</p>
-          <div className="absolute top-2 right-2 text-white/30 text-[8px]">02/14/2026</div>
+          
+          <div className="absolute bottom-3 left-0 w-full px-4 flex justify-between items-center">
+            <p className="font-serif text-gray-700 text-base italic tracking-tight">
+              {img.caption.replace(/_/g, ' ')}
+            </p>
+            <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+              <span className="text-primary text-[10px]">❤️</span>
+            </div>
+          </div>
         </motion.div>
       ))}
-      <motion.p 
+
+      <motion.div 
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="text-center text-white/60 italic text-sm py-4"
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="text-center space-y-4 py-8"
       >
-        To many more memories... 🥂
-      </motion.p>
+        <div className="h-px w-12 bg-white/20 mx-auto" />
+        <p className="text-white/80 font-serif italic text-xl leading-relaxed px-4">
+          "I want to make more memories with you every single day. I can't wait for us to take pictures together... ❤️"
+        </p>
+        <p className="text-[#ffccd5] text-xs uppercase tracking-[0.3em] font-black pt-4">
+          Forever & Always
+        </p>
+      </motion.div>
     </div>
   );
 };
