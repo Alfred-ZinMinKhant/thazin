@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+  --primary-pink: #ff4d6d;
+  --soft-pink: #ffccd5;
+  --deep-red: #c9184a;
+  --white: #fff0f3;
+  --glass-bg: rgba(255, 255, 255, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --shadow: 0 8px 32px 0 rgba(193, 31, 79, 0.37);
+  --gold: #d4af37;
+  --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9e272 50%, #d4af37 100%);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #590d22;
+  background-image: linear-gradient(135deg, #590d22 0%, #a4133c 100%);
+  color: var(--white);
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  box-shadow: var(--shadow);
+}
+
+/* 3D Scene Controls */
+.scene {
+  perspective: 2000px;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.box-3d {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+/* 3D Heart Shape Helpers */
+.heart-left, .heart-right {
+  position: absolute;
+  width: 100px;
+  height: 160px;
+  background: inherit;
+  border-radius: 100px 100px 0 0;
+}
+
+.heart-left {
+  left: 100px;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart-right {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+/* Custom Utilities */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 3D Rotation Utilities */
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+.rotate-x-20 {
+  transform: rotateX(20deg);
+}
