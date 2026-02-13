@@ -92,48 +92,46 @@ const GlassBoxFlower = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center py-10 w-full min-h-[600px]">
+    <div className="flex flex-col items-center justify-center py-2 w-full h-full overflow-hidden">
       <div 
-        className="relative w-80 h-[500px] flex items-center justify-center cursor-pointer perspective-1000 group"
+        className="relative w-64 h-[380px] flex items-center justify-center cursor-pointer perspective-1000 group shrink-0 scale-90 sm:scale-100"
         onClick={handleBloom}
       >
         {/* Ornate Pedestal Base */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-72 h-32 z-0">
-          <div className="absolute bottom-0 w-full h-12 bg-gradient-to-b from-[#d4af37] via-[#f9e27c] to-[#b8860b] rounded-xl shadow-2xl skew-x-[-2deg]"></div>
-          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-64 h-8 bg-gradient-to-b from-[#f9e27c] to-[#d4af37] rounded-lg"></div>
-          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-56 h-4 bg-gradient-to-b from-[#d4af37] to-[#b8860b] rounded-t-full"></div>
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-28 z-0">
+          <div className="absolute bottom-0 w-full h-10 bg-gradient-to-b from-[#d4af37] via-[#f9e27c] to-[#b8860b] rounded-xl shadow-2xl skew-x-[-2deg]"></div>
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-56 h-6 bg-gradient-to-b from-[#f9e27c] to-[#d4af37] rounded-lg"></div>
+          <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-48 h-3 bg-gradient-to-b from-[#d4af37] to-[#b8860b] rounded-t-full"></div>
           
-          <div className="absolute bottom-24 left-1/2 -translate-x-1/2 w-48 h-10 pointer-events-none">
-            <div className="absolute left-4 top-2 w-6 h-4 bg-red-600 rounded-br-[20px] rounded-tl-[10px] rotate-45 opacity-80 blur-[0.5px]"></div>
-            <div className="absolute right-6 top-1 w-5 h-3 bg-red-700 rounded-br-[15px] rounded-tl-[8px] -rotate-12 opacity-90 blur-[0.5px]"></div>
-            <div className="absolute left-16 top-4 w-7 h-4 bg-red-500 rounded-br-[25px] rounded-tl-[12px] rotate-[110deg] opacity-70 blur-[0.5px]"></div>
+          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-40 h-8 pointer-events-none">
+            <div className="absolute left-4 top-2 w-5 h-3 bg-red-600 rounded-br-[15px] rounded-tl-[8px] rotate-45 opacity-80 blur-[0.5px]"></div>
+            <div className="absolute right-6 top-1 w-4 h-2 bg-red-700 rounded-br-[12px] rounded-tl-[6px] -rotate-12 opacity-90 blur-[0.5px]"></div>
           </div>
         </div>
 
         {/* Bell Jar / Glass Dome */}
-        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 w-64 h-[380px] z-20">
-          <div className="absolute inset-0 bg-white/5 backdrop-blur-[1px] border-[1.5px] border-white/20 rounded-t-[140px] shadow-[inset_0_0_80px_rgba(255,255,255,0.1),_0_0_30px_rgba(0,0,0,0.3)] overflow-hidden">
-            <div className="absolute top-12 left-8 w-6 h-48 bg-white/10 rounded-full blur-md -rotate-[15deg] opacity-40"></div>
-            <div className="absolute top-20 right-10 w-2 h-32 bg-white/10 rounded-full blur-sm rotate-[5deg] opacity-30"></div>
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 w-12 h-4 bg-white/20 rounded-full opacity-50"></div>
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-56 h-[320px] z-20">
+          <div className="absolute inset-0 bg-white/5 backdrop-blur-[1px] border-[1.5px] border-white/20 rounded-t-[120px] shadow-[inset_0_0_60px_rgba(255,255,255,0.1),_0_0_20px_rgba(0,0,0,0.3)] overflow-hidden">
+            <div className="absolute top-10 left-6 w-5 h-40 bg-white/10 rounded-full blur-md -rotate-[15deg] opacity-40"></div>
+            <div className="absolute top-16 right-8 w-1.5 h-28 bg-white/10 rounded-full blur-sm rotate-[5deg] opacity-30"></div>
           </div>
 
-          <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-10 h-10 bg-gradient-to-br from-white/30 to-transparent backdrop-blur-md border border-white/20 rounded-full shadow-lg z-30">
-            <div className="absolute inset-2 bg-[#d4af37] rounded-full shadow-inner opacity-40"></div>
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 bg-gradient-to-br from-white/30 to-transparent backdrop-blur-md border border-white/20 rounded-full shadow-lg z-30">
+            <div className="absolute inset-1.5 bg-[#d4af37] rounded-full shadow-inner opacity-40"></div>
           </div>
 
           <div className="absolute inset-0 pointer-events-none">
-             {[...Array(8)].map((_, i) => (
+             {[...Array(6)].map((_, i) => (
                <motion.div
                  key={i}
                  animate={{ 
                    opacity: [0, 0.8, 0],
                    scale: [0, 1, 0],
-                   y: [Math.random() * 300, Math.random() * 300 - 20],
-                   x: [Math.random() * 200, Math.random() * 200]
+                   y: [Math.random() * 250, Math.random() * 250 - 20],
+                   x: [Math.random() * 180, Math.random() * 180]
                  }}
                  transition={{ repeat: Infinity, duration: 4 + Math.random() * 4, delay: i * 0.5 }}
-                 className="absolute text-yellow-200/40 text-[10px]"
+                 className="absolute text-yellow-200/40 text-[8px]"
                >
                  ✨
                </motion.div>
@@ -142,41 +140,41 @@ const GlassBoxFlower = () => {
         </div>
 
         {/* Enchanted Rose(s) with Distinct Stems */}
-        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 w-full h-full z-10 pointer-events-none">
-          {/* Main Rose (Always visible) */}
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-full h-full z-10 pointer-events-none">
+          {/* Main Rose */}
           <RoseWithStem 
             isBloomed={isBloomed} 
-            y={20} // Positioned close to base
-            height={40}
-            scale={1}
+            y={15} 
+            height={35}
+            scale={0.9}
           />
 
-          {/* Bouquet Roses (Appear on click) */}
+          {/* Bouquet Roses */}
           <AnimatePresence>
             {isBloomed && bouquetRoses.map((r) => (
               <RoseWithStem 
                 key={r.id}
                 isBloomed={true}
-                x={r.x}
-                y={r.y}
+                x={r.x * 0.8}
+                y={r.y * 0.8}
                 rotate={r.rotate}
-                scale={r.scale}
+                scale={r.scale * 0.9}
                 delay={r.delay}
-                height={r.height}
+                height={r.height * 0.85}
               />
             ))}
           </AnimatePresence>
         </div>
 
         {/* Floating Petals System */}
-        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 w-60 h-[380px] z-15 pointer-events-none overflow-hidden rounded-t-[140px]">
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-52 h-[320px] z-15 pointer-events-none overflow-hidden rounded-t-[120px]">
           {petals.map((p) => (
             <motion.div
               key={p.id}
               initial={{ y: -50, x: p.x, opacity: 0, rotate: p.rotate }}
               animate={{ 
-                y: [Math.random() * 100, 320],
-                x: [p.x, p.x + (Math.random() - 0.5) * 60],
+                y: [Math.random() * 80, 260],
+                x: [p.x * 0.8, (p.x + (Math.random() - 0.5) * 50) * 0.8],
                 rotate: [p.rotate, p.rotate + 360],
                 opacity: [0, 0.9, 0.7, 0]
               }}
@@ -186,8 +184,7 @@ const GlassBoxFlower = () => {
                 delay: p.delay,
                 ease: "linear"
               }}
-              style={{ filter: 'drop-shadow(0 0 5px rgba(255,0,0,0.3))' }}
-              className="absolute w-5 h-4 bg-red-600 rounded-br-[15px] rounded-tl-[8px]"
+              className="absolute w-4 h-3 bg-red-600 rounded-br-[12px] rounded-tl-[6px]"
             ></motion.div>
           ))}
         </div>
@@ -201,21 +198,21 @@ const GlassBoxFlower = () => {
               exit={{ opacity: 0 }}
               className="absolute inset-0 z-40 pointer-events-none flex items-center justify-center"
             >
-              <div className="absolute w-[400px] h-[400px] bg-primary/10 blur-[100px] rounded-full"></div>
-              {[...Array(20)].map((_, i) => (
+              <div className="absolute w-64 h-64 bg-primary/10 blur-[80px] rounded-full"></div>
+              {[...Array(15)].map((_, i) => (
                 <motion.div
                   key={i}
                   initial={{ scale: 0, rotate: 0 }}
                   animate={{ 
-                    scale: [0, 1.8, 0],
-                    x: [(Math.random() - 0.5) * 350],
-                    y: [(Math.random() - 0.5) * 350],
+                    scale: [0, 1.5, 0],
+                    x: [(Math.random() - 0.5) * 280],
+                    y: [(Math.random() - 0.5) * 280],
                     rotate: 720
                   }}
                   transition={{ duration: 2, delay: i * 0.05 }}
                   className="absolute text-yellow-400"
                 >
-                  <Sparkles size={16 + Math.random() * 16} />
+                  <Sparkles size={12 + Math.random() * 12} />
                 </motion.div>
               ))}
             </motion.div>
@@ -227,33 +224,33 @@ const GlassBoxFlower = () => {
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="mt-4 text-center max-w-sm space-y-4"
+        className="mt-2 text-center max-w-xs space-y-2 shrink-0 px-2"
       >
-        <div className="p-8 bg-gradient-to-br from-white/10 to-transparent backdrop-blur-3xl border border-white/20 rounded-[3rem] shadow-2xl relative overflow-hidden group/card">
-          <h3 className="text-3xl font-serif text-white italic mb-4 tracking-tighter">Enchanted Gift</h3>
-          <p className="text-soft font-light leading-relaxed italic text-lg opacity-90 transition-all duration-700">
+        <div className="p-4 bg-gradient-to-br from-white/10 to-transparent backdrop-blur-3xl border border-white/20 rounded-[2rem] shadow-xl relative overflow-hidden group/card">
+          <h3 className="text-xl font-serif text-white italic mb-1 tracking-tighter">Enchanted Gift</h3>
+          <p className="text-soft font-light leading-snug italic text-sm opacity-90 transition-all duration-700">
             {isBloomed 
-              ? "A miracle of love! The single rose has bloomed into a radiant bouquet for you. ❤️" 
-              : "A single piece of magic, waiting for your touch. Tap the jar to see it bloom..."}
+              ? "A miracle of love! The rose has bloomed into a radiant bouquet. ❤️" 
+              : "A piece of magic, waiting for your touch. Tap the jar..."}
           </p>
           
           <AnimatePresence>
             {isBloomed && (
               <motion.div 
-                initial={{ scale: 0, y: 10 }}
-                animate={{ scale: 1, y: 0 }}
-                className="mt-4 flex justify-center gap-2"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                className="mt-2 flex justify-center gap-2 items-center"
               >
-                <Sparkles className="text-yellow-400" size={20} />
-                <span className="text-white text-xs uppercase tracking-[0.3em] font-black">Miraculous Bloom</span>
-                <Sparkles className="text-yellow-400" size={20} />
+                <Sparkles className="text-yellow-400" size={14} />
+                <span className="text-white text-[9px] uppercase tracking-[0.2em] font-black">Miracle</span>
+                <Sparkles className="text-yellow-400" size={14} />
               </motion.div>
             )}
           </AnimatePresence>
         </div>
         
-        <p className="text-white/20 text-[10px] uppercase tracking-[0.5em] font-black">
-          {isBloomed ? "Bloomed with love" : "Tap the jar to bloom"}
+        <p className="text-white/20 text-[8px] uppercase tracking-[0.4em] font-black pb-4">
+          {isBloomed ? "Bloomed" : "Tap to bloom"}
         </p>
       </motion.div>
     </div>

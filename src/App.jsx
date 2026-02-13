@@ -19,31 +19,35 @@ const PageLayout = ({ children, title, showBack = true }) => {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 1.05 }}
-      className="p-6 max-w-lg mx-auto min-h-screen flex flex-col items-center justify-center relative z-10"
+      className="p-4 max-w-lg mx-auto h-[100dvh] flex flex-col items-center relative z-10 overflow-hidden"
     >
-      {showBack && (
-        <button 
-          onClick={() => navigate('/menu')} 
-          className="absolute top-10 left-6 p-3 bg-white/10 rounded-full text-white backdrop-blur-xl border border-white/20 z-50 transition-all hover:bg-white/20 active:scale-90"
-        >
-          <ChevronLeft size={24} />
-        </button>
-      )}
+      <div className="w-full flex items-center justify-between mb-2 px-2 h-14 shrink-0">
+        {showBack ? (
+          <button 
+            onClick={() => navigate('/menu')} 
+            className="p-3 bg-white/10 rounded-full text-white backdrop-blur-xl border border-white/20 z-50 transition-all hover:bg-white/20 active:scale-90"
+          >
+            <ChevronLeft size={20} />
+          </button>
+        ) : <div className="w-10" />}
+        
+        {title && (
+          <div className="flex-1 flex flex-col items-center">
+            <h1 className="text-2xl font-serif text-white tracking-tight leading-tight text-center">{title}</h1>
+            <div className="h-0.5 w-8 bg-primary rounded-full mt-1"></div>
+          </div>
+        )}
+        <div className="w-10" />
+      </div>
       
-      <div className="glass-card w-full relative overflow-hidden">
+      <div className="glass-card w-full flex-1 relative overflow-hidden flex flex-col">
         {/* Background Decor - Inner Heart */}
         <div className="absolute -top-16 -right-16 text-primary rotate-12 opacity-10 pointer-events-none">
             <Heart size={200} fill="currentColor" />
         </div>
         
-        <div className="relative z-10 p-4">
-          {title && (
-            <div className="flex flex-col items-center mb-10">
-                <h1 className="text-4xl font-serif text-white tracking-tight leading-tight">{title}</h1>
-                <div className="h-1 w-12 bg-primary rounded-full mt-2"></div>
-            </div>
-          )}
-          <div className="w-full">
+        <div className="relative z-10 p-2 flex-1 flex flex-col overflow-hidden">
+          <div className="w-full flex-1 overflow-y-auto overflow-x-hidden pt-2">
               {children}
           </div>
         </div>
