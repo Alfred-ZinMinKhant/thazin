@@ -34,7 +34,7 @@ const ChocolateBox3D = ({ onChocolateClick, onOpen, isEmpty = false }) => {
   };
 
   return (
-    <div className="flex flex-col items-center py-6">
+    <div className="flex flex-col items-center py-2">
       {/* SVG Definitions for Clipping */}
       <svg width="0" height="0" className="absolute">
         <defs>
@@ -45,19 +45,19 @@ const ChocolateBox3D = ({ onChocolateClick, onOpen, isEmpty = false }) => {
       </svg>
 
       <div 
-        className="scene w-72 h-72 cursor-pointer"
+        className="scene w-64 h-64 cursor-pointer scale-90 sm:scale-100"
         onClick={() => { if (!isOpen) { setIsOpen(true); if (onOpen) onOpen(); } }}
       >
         <div 
           className="box-3d relative w-full h-full transform-gpu transition-all duration-1000"
-          style={{ transform: isOpen ? 'rotateX(25deg) translateY(20px)' : 'rotateX(0deg)' }}
+          style={{ transform: isOpen ? 'rotateX(25deg) translateY(10px)' : 'rotateX(0deg)' }}
         >
           
           {/* Box Bottom / Tray - The Heart Tray */}
           <div className="absolute inset-0 flex items-center justify-center translate-z-[-20px]">
             {/* The clipped tray containing EVERYTHING */}
             <div 
-              className="relative w-64 h-64 shadow-2xl overflow-hidden pointer-events-auto"
+              className="relative w-56 h-56 shadow-2xl overflow-hidden pointer-events-auto"
               style={{ clipPath: 'url(#heartClip)' }}
               onClick={isOpen ? closeBox : undefined}
             >
@@ -76,8 +76,8 @@ const ChocolateBox3D = ({ onChocolateClick, onOpen, isEmpty = false }) => {
                   transition={{ delay: choc.delay + 0.5, type: 'spring', stiffness: 260, damping: 20 }}
                   style={{ 
                     position: 'absolute', 
-                    left: `${choc.x}px`, 
-                    top: `${choc.y}px`,
+                    left: `${choc.x * 0.875}px`, 
+                    top: `${choc.y * 0.875}px`,
                     transform: 'translate(-50%, -50%)',
                     zIndex: 200,
                   }}
@@ -85,16 +85,15 @@ const ChocolateBox3D = ({ onChocolateClick, onOpen, isEmpty = false }) => {
                     e.stopPropagation();
                     if (isOpen) onChocolateClick(choc.id);
                   }}
-                  className="w-12 h-12 flex items-center justify-center cursor-pointer active:scale-90 transition-transform"
+                  className="w-10 h-10 flex items-center justify-center cursor-pointer active:scale-90 transition-transform"
                 >
                   <div 
-                    className="w-10 h-10 bg-gradient-to-tr from-amber-700 via-amber-400 to-amber-200 rounded-lg shadow-xl overflow-hidden border border-white/10"
+                    className="w-8 h-8 bg-gradient-to-tr from-amber-700 via-amber-400 to-amber-200 rounded-lg shadow-xl overflow-hidden border border-white/10"
                     style={{ rotate: `${choc.rotation}deg`, borderRadius: '35% 65% 65% 35% / 45% 45% 55% 55%' }}
                   >
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.4),transparent)]"></div>
-                    <div className="absolute inset-[6px] bg-[#2a130c] rounded-full shadow-inner opacity-90"></div>
+                    <div className="absolute inset-[4px] bg-[#2a130c] rounded-full shadow-inner opacity-90"></div>
                   </div>
-                  <div className="absolute -top-0 -right-0 w-3.5 h-3.5 bg-white text-[5px] rounded-full flex items-center justify-center text-amber-800 font-black shadow-sm pointer-events-none border border-amber-50">F</div>
                 </motion.div>
               ))}
             </div>
@@ -105,25 +104,23 @@ const ChocolateBox3D = ({ onChocolateClick, onOpen, isEmpty = false }) => {
             className="absolute inset-0 z-[300] origin-top"
             animate={{ 
               rotateX: isOpen ? -110 : 0,
-              y: isOpen ? -50 : 0,
-              z: isOpen ? 70 : 0,
+              y: isOpen ? -40 : 0,
+              z: isOpen ? 60 : 0,
               opacity: isOpen ? 0.9 : 1
             }}
             transition={{ type: 'spring', damping: 20, stiffness: 90 }}
             style={{ pointerEvents: isOpen ? 'none' : 'auto' }}
             onClick={(e) => { e.stopPropagation(); setIsOpen(!isOpen); if (!isOpen && onOpen) onOpen(); }}
           >
-            <div className="relative w-full h-full flex items-center justify-center drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
+            <div className="relative w-full h-full flex items-center justify-center drop-shadow-[0_15px_30px_rgba(0,0,0,0.5)]">
                 {/* Main Lid Body */}
-                <div className="relative w-64 h-64 bg-primary overflow-hidden"
+                <div className="relative w-56 h-56 bg-primary overflow-hidden"
                      style={{ clipPath: 'url(#heartClip)' }}>
                   <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-black/30"></div>
-                  <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, #fff 0.8px, transparent 0.8px)', backgroundSize: '12px 12px' }}></div>
                   
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4 -translate-y-4">
-                    <p className="font-serif text-3xl italic font-bold tracking-tight drop-shadow-xl">Ferrero</p>
-                    <p className="text-[10px] tracking-[0.5em] uppercase opacity-90 mt-1 font-black text-amber-200">Collection</p>
-                    <div className="w-12 h-[1px] bg-amber-400 mt-2"></div>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4 -translate-y-2">
+                    <p className="font-serif text-2xl italic font-bold tracking-tight drop-shadow-xl">Ferrero</p>
+                    <p className="text-[8px] tracking-[0.4em] uppercase opacity-90 mt-0.5 font-black text-amber-200">Collection</p>
                   </div>
                 </div>
 
@@ -140,7 +137,7 @@ const ChocolateBox3D = ({ onChocolateClick, onOpen, isEmpty = false }) => {
       <motion.p 
         animate={{ opacity: [0.5, 1, 0.5] }}
         transition={{ repeat: Infinity, duration: 2 }}
-        className="mt-14 text-white/50 text-[10px] font-bold tracking-[0.4em] uppercase"
+        className="mt-6 text-white/50 text-[10px] font-bold tracking-[0.4em] uppercase"
       >
         {isOpen ? "A surprise in every bite 🍫" : "Tap to open your heart ❤️"}
       </motion.p>

@@ -63,9 +63,7 @@ const Landing = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   const moveNo = () => {
-    // Generate a position that is guaranteed to be within the safe area of the screen
-    // and far enough from the current position to look like a "jump"
-    const padding = 100;
+    const padding = 80;
     const newX = Math.random() * (window.innerWidth - padding * 2) + padding;
     const newY = Math.random() * (window.innerHeight - padding * 2) + padding;
     
@@ -75,60 +73,61 @@ const Landing = () => {
 
   return (
     <PageLayout showBack={false}>
-      <motion.div
-        animate={{ scale: [1, 1.15, 1], rotate: [0, 5, -5, 0] }}
-        transition={{ repeat: Infinity, duration: 2.5 }}
-        className="text-primary mb-8 flex justify-center"
-      >
-        <Heart size={80} fill="currentColor" className="drop-shadow-[0_0_20px_rgba(255,77,109,0.5)]" />
-      </motion.div>
-      <h1 className="text-5xl font-serif mb-6 text-white text-center italic">Hello Thazin! ❤️</h1>
-      <p className="text-soft/90 text-center mb-12 text-lg font-light leading-relaxed">
-        I've been thinking about something... <br/>
-        Thazin ka Valentine's Day atwat gift ma yu poo so loh <br/>
-        And I made this just for you.
-      </p>
-      
-      <div className="space-y-8">
-        <h2 className="text-2xl italic text-white text-center font-serif">Will you be my Valentine?</h2>
-        <div className="flex justify-center gap-6 relative min-h-[140px] items-center">
-          <motion.button 
-            animate={{ scale: [1, 1.05, 1], boxShadow: ["0px 0px 0px rgba(255,77,109,0)", "0px 0px 20px rgba(255,77,109,0.5)", "0px 0px 0px rgba(255,77,109,0)"] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => navigate('/menu')}
-            className="bg-primary hover:bg-[#ff1b4d] text-white px-12 py-4 rounded-full font-bold shadow-2xl z-20 transition-all active:scale-95"
-          >
-            Yes! ❤️
-          </motion.button>
-          
-          <motion.button 
-            animate={{ 
-              x: noPos.x, 
-              y: noPos.y,
-              scale: isHovered ? 0.8 : 1,
-              rotate: isHovered ? [0, 10, -10, 0] : 0
-            }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            onHoverStart={moveNo}
-            onTapStart={moveNo} // For mobile
-            className="border-2 border-white/40 text-white/70 px-12 py-4 rounded-full font-bold z-10 hover:border-white/60"
-          >
-            No 😢
-          </motion.button>
-        </div>
-      </div>
-      
-      {isHovered && (
-        <motion.p 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-center text-soft/40 text-xs mt-8 italic"
+      <div className="flex flex-col items-center justify-center h-full py-2">
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
+          transition={{ repeat: Infinity, duration: 2.5 }}
+          className="text-primary mb-4 flex justify-center"
         >
-          Hehe, you can't click it! 😉
-        </motion.p>
-      )}
+          <Heart size={60} fill="currentColor" className="drop-shadow-[0_0_15px_rgba(255,77,109,0.5)]" />
+        </motion.div>
+        
+        <h1 className="text-3xl font-serif mb-4 text-white text-center italic">Hello Thazin! ❤️</h1>
+        
+        <p className="text-soft/90 text-center mb-8 text-base font-light leading-relaxed max-w-[280px]">
+          Thazin ka Valentine's Day atwat gift ma yu poo so loh and I made this just for you.
+        </p>
+        
+        <div className="w-full space-y-6">
+          <h2 className="text-xl italic text-white text-center font-serif">Will you be my Valentine?</h2>
+          <div className="flex justify-center gap-4 relative min-h-[100px] items-center">
+            <motion.button 
+              animate={{ scale: [1, 1.05, 1], boxShadow: ["0px 0px 0px rgba(255,77,109,0)", "0px 0px 15px rgba(255,77,109,0.4)", "0px 0px 0px rgba(255,77,109,0)"] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => navigate('/menu')}
+              className="bg-primary hover:bg-[#ff1b4d] text-white px-8 py-3 rounded-full font-bold shadow-xl z-20 transition-all active:scale-95 text-sm"
+            >
+              Yes! ❤️
+            </motion.button>
+            
+            <motion.button 
+              animate={{ 
+                x: noPos.x, 
+                y: noPos.y,
+                scale: isHovered ? 0.8 : 1
+              }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              onHoverStart={moveNo}
+              onTapStart={moveNo} // For mobile
+              className="border-2 border-white/30 text-white/70 px-8 py-3 rounded-full font-bold z-10 hover:border-white/60 text-sm"
+            >
+              No 😢
+            </motion.button>
+          </div>
+        </div>
+        
+        {isHovered && (
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center text-soft/40 text-[10px] mt-4 italic"
+          >
+            Hehe, you can't click it! 😉
+          </motion.p>
+        )}
+      </div>
     </PageLayout>
   )
 }
@@ -190,29 +189,29 @@ const ChocolatePage = () => {
               onOpen={() => setIsOpen(true)}
             />
             
-            <div className="mt-8 text-center space-y-6 min-h-[140px]">
+            <div className="mt-4 text-center space-y-4 min-h-[100px]">
               {!isOpen ? (
-                <p className="text-white/40 text-sm font-serif italic animate-pulse">
+                <p className="text-white/40 text-[10px] font-serif italic animate-pulse tracking-widest uppercase">
                   Tap the box to open... 💝
                 </p>
               ) : (
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="space-y-6"
+                  className="space-y-4"
                 >
-                  <div className="p-6 bg-white/5 rounded-3xl border border-white/10 backdrop-blur-md">
-                    <p className="text-soft font-serif italic text-2xl mb-2">Oh no! 😱</p>
-                    <p className="text-white/70 text-sm">The chocolates are missing! Someone must have taken them...</p>
+                  <div className="p-4 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-md">
+                    <p className="text-soft font-serif italic text-xl mb-1">Oh no! 😱</p>
+                    <p className="text-white/70 text-xs">The chocolates are missing! Someone must have taken them...</p>
                   </div>
                   
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setIsPlaying(true)}
-                    className="px-10 py-4 bg-primary text-white rounded-full font-bold shadow-xl flex items-center gap-2 mx-auto"
+                    className="px-8 py-3 bg-primary text-white rounded-full font-bold shadow-xl flex items-center gap-2 mx-auto text-sm"
                   >
-                    <Sparkles size={20} />
+                    <Sparkles size={16} />
                     Recover Them!
                   </motion.button>
                 </motion.div>

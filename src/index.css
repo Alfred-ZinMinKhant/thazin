@@ -16,13 +16,14 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-body {
+html, body {
   background-color: #590d22;
   background-image: linear-gradient(135deg, #590d22 0%, #a4133c 100%);
   color: var(--white);
-  min-height: 100vh;
+  height: 100dvh;
   margin: 0;
-  overflow-x: hidden;
+  overflow: hidden;
+  touch-action: none;
 }
 
 .glass-card {
